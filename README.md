@@ -19,7 +19,7 @@ awk ---> gawk 即:gun awk
 - 重复
          一直重复上述两个过程直到文件结束
 
-##awk内置变量
+## awk内置变量
 `$n` 是指当前记录的第n个字段，比如：`$1`表示第一个字段，`$2`表示第二个字段
 
 	echo 'AA BBB CC' | awk '{print $1}'
@@ -77,8 +77,8 @@ NR == FNR ：用于在读取两个或两个以上的文件时，判断是不是�
 		BBB
 		CCC
 		
-##awk内置函数
-####算术函数
+## awk内置函数
+#### 算术函数
 	
 |  函数名 | 说明  |
 | ------------ | ------------ |
@@ -124,7 +124,7 @@ NR == FNR ：用于在读取两个或两个以上的文件时，判断是不是�
 		5
 		返回的是array数组的长度，里面含有五个以" "为分隔符被切割的字符
 		
-####格式化字符输出（printf使用）
+#### 格式化字符输出（printf使用）
 |	函数名	|	说明	|
 | 	------------ | ------------|
 |%d|十进制有符号整数|
@@ -138,7 +138,7 @@ NR == FNR ：用于在读取两个或两个以上的文件时，判断是不是�
 |%o|无符号以八进制表示的整数|
 |%g|自动选择合适的表示法|
 
-####时间函数
+#### 时间函数
 
 |	函数名	|	说明	|
 | 	------------ | ------------|
@@ -174,7 +174,7 @@ NR == FNR ：用于在读取两个或两个以上的文件时，判断是不是�
 
 		AAA|BBB|CCC
 
-##awk的正则表达式
+## awk的正则表达式
 1、匹配表达式和正则表达式
 		
 		echo "AAABBBCCC" | awk '{if($0 ~/AA/) {print $0}}'
@@ -219,7 +219,7 @@ NR == FNR ：用于在读取两个或两个以上的文件时，判断是不是�
 			
 		awk -V
 
-##awk脚本
+## awk脚本
 关于awk脚本，我们需要注意两个关键词BEGIN 和 END。
 
 - BEGIN {这里放的是执行前的语句}
@@ -259,7 +259,7 @@ NR == FNR ：用于在读取两个或两个以上的文件时，判断是不是�
 	NAME NO. age
 
 	TOTAL:87
-##处理文件示例
+## 处理文件示例
 1、去重
 
 	cat test
@@ -298,7 +298,7 @@ NR == FNR ：用于在读取两个或两个以上的文件时，判断是不是�
 	获取filename2文件与fileaname文件的交集部分
 
 
-##awk数组
+## awk数组
 awk 可以使用关联数组这种数据格式，索引可以是数字或者字符串。
 数组使用的语法格式：
 	
@@ -308,26 +308,26 @@ awk 可以使用关联数组这种数据格式，索引可以是数字或者字�
 - index ：数组索引
 - value：数组中元素所赋予的值
 
-####创建数组
+#### 创建数组
 
 		awk 'BEGIN{array_1["baidu"]="www.baidu.com";array_2["sougou"] = "www.sougou.com";print array_1["baidu"] "\n" array_2["sougou"]}'
 
 		www.baidu.com
 		www.sougou.com
-####删除数组元素
+#### 删除数组元素
 	
 		awk 'BEGIN{array_1["baidu"]="www.baidu.com";array_2["sougou"] = "www.sougou.com";delete array_1["baidu"] ; print array_1["baidu"] "\n" array_2["sougou"]}'
 		
 		www.sougou.com
 
-####多维数组
+#### 多维数组
 		
 		array["0,0"] = 100;
 		array["0,1"] = 200;
 
-##awk条件语句与循环
+## awk条件语句与循环
 
-####条件语句
+#### 条件语句
 if语句
 
 		awk 'BEGIN{num = 10;if(num % 2 == 0)printf "%d是偶数",num}'
@@ -341,7 +341,7 @@ if - else 语句
 		11是奇数
 if -else  if
 
-####循环
+#### 循环
 For循环
 	
 	awk 'BEGIN {for(i = 0 ; i < 5 ; i++ ) print i }'
@@ -401,7 +401,7 @@ Exit
 	sum =  15
 
 
-##awk用户自定义函数
+## awk用户自定义函数
 
 function_name  为用户自定义的函数名称，function body 为 函数体部分，包含awk程序代码。argu1,argu2为参数
 
@@ -410,7 +410,7 @@ function_name  为用户自定义的函数名称，function body 为 函数体�
 
 			function body
 		}
-##awk的几个常用高级用法
+## awk的几个常用高级用法
 1、同时指定多个分隔符
 		
 		echo "AAA:|BBB:|CCC" | awk -F'[:|]' '{print $1 "\t" $3}'
